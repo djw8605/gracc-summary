@@ -12,4 +12,4 @@ RUN python setup.py install
 RUN install -d -m 0755 /etc/graccsum/config.d/ && install -m 0744 config/gracc-summary.toml /etc/graccsum/config.d/gracc-summary.toml
 
 
-/usr/bin/graccsumperiodic -c /etc/graccsum/config.d/gracc-summary.toml
+CMD /usr/bin/graccsumperiodic -c /etc/graccsum/config.d/gracc-summary.toml
