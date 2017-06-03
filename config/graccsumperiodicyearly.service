@@ -1,15 +1,16 @@
 [Unit]
 Description=GRACC Year Periodic Summarizer Agent
 Documentation=https://opensciencegrid.github.io/gracc
-Wants=network-online.target
-After=network-online.target
-
+Requires=docker.service
+After=docker.service
+ 
 [Service]
-User=gracc
-Group=gracc
+TimeoutStartSec=0
 Type=oneshot
-ExecStart=/usr/bin/graccsumperiodic -c /etc/graccsum/config.d/gracc-summary.toml -t 365
-TimeoutStopSec=20
-
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull opensciencegrid/gracc-summary
+ExecStart=/usr/bin/docker run --rm --name %n opensciencegrid/gracc-summary -t 365
+ 
 [Install]
 WantedBy=multi-user.target
