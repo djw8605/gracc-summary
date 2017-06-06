@@ -15,6 +15,17 @@ It is easy to install the GRACC Summary Daemon with virtualenv
     python setup.py install
 
 
+## Running Re-Summarization
+
+If gracc-summary is installed on the node:
+
+    graccsummarizer "amqps://username:password@rabbitmq:5671/gracc" --destination_exchange gracc.osg.summary --destination_key gracc.osg.summary --type=summary 2016-11-01 2017-02-01
+    
+If you are using the docker installation, the command will be:
+
+    sudo docker run opensciencegrid/gracc-summary /usr/bin/graccsummarizer "amqps://gracc:%3C9zLh.qC%24CVme6L%5B@event.grid.iu.edu:5671/gracc" --destination_exchange gracc.osg.summary --destination_key gracc.osg.summary --type=summary 2016-11-01 2017-02-01
+
+
 ## Docker Installation
 
 A docker image with gracc-summary installed in available as opensciencegrid/gracc-summary.  
