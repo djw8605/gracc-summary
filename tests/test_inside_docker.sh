@@ -68,7 +68,7 @@ bash -x ./import.sh
 popd
 
 # Run the daemon 
-/usr/bin/graccsum -c /etc/graccsum/config.d/gracc-summary.toml
+/usr/bin/graccsumperiodic -c /etc/graccsum/config.d/gracc-summary.toml
 
 pushd gracc-summary/
 set +e
