@@ -67,18 +67,9 @@ pushd gracc-test-data
 bash -x ./import.sh
 popd
 
-# Start the gracc periodic summarizer after data has been imported
-systemctl start graccsumperiodic.timer
-systemctl start graccsumperiodicyearly.timer
-systemctl status -l graccsumperiodic.timer
-systemctl status -l graccsumperiodicyearly.timer
-journalctl -u graccsumperiodic.timer -n 100 --no-pager
-journalctl -u graccsumperiodic.service -n 100 --no-pager
-# systemctl list-timers --all
-sleep 65
-journalctl -u graccsumperiodic.service --no-pager
-
-
+pushd gracc-summary/
+docker build -t graccsum-build .
+popd 
 
 pushd gracc-summary/
 set +e
