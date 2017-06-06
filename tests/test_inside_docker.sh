@@ -11,6 +11,7 @@ rpm -Uvh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.
 rpm -Uvh https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.3.4-1.noarch.rpm
 
 systemctl start elasticsearch.service
+systemctl start docker
 
 
 mkdir -p /usr/share/gracc/
