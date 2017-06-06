@@ -67,10 +67,6 @@ pushd gracc-test-data
 bash -x ./import.sh
 popd
 
-pushd gracc-summary/
-docker build -t graccsum-build .
-popd 
-
 # Run the daemon 
 /usr/bin/graccsum -c /etc/graccsum/config.d/gracc-summary.toml
 
